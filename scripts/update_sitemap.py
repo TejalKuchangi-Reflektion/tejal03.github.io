@@ -26,8 +26,9 @@ def main():
 
     changed = 0
 
-    # For each <url> entry, update/create <lastmod>
-    for url in root.findall(q("url")):
+    # Update/create <lastmod> for only the first two <url> entries
+    urls = root.findall(q("url"))
+    for url in urls[:2]:
         lastmod = url.find(q("lastmod"))
         if lastmod is None:
             lastmod = ET.SubElement(url, q("lastmod"))
